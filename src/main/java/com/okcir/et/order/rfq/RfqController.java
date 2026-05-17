@@ -1,15 +1,10 @@
 package com.okcir.et.order.order;
 
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.okcir.et.order.order.state.dto.RfqOrderDTO;
 
 import lombok.RequiredArgsConstructor;
-
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 @RestController
 @RequestMapping("order")
@@ -17,13 +12,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class OrderController {
   private final OrderService orderService;
 
+
   @GetMapping
   public Object getOrder() {
     return "Order";
   }
 
-  @PostMapping
+  @PostMapping()
   public Object createOrder(@RequestBody RfqOrderDTO orderDTO) {
     return orderService.createOrder(orderDTO);
   }
+
+  @PostMapping("/{order-id}/claim")
+  public Object claimOrder(@PathVariable("order-id") String orderId) {
+    return orderService.claimOrder(orderId);
+  }
+
 }

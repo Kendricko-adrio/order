@@ -1,4 +1,4 @@
-package com.okcir.et.order.order.state.claimed;
+package com.okcir.et.order.rfq.state.claimed;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;

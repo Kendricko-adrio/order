@@ -1,16 +1,16 @@
-package com.okcir.et.order.order;
+package com.okcir.et.order.rfq;
 
 import org.springframework.web.bind.annotation.*;
 
-import com.okcir.et.order.order.state.dto.RfqOrderDTO;
+import com.okcir.et.order.rfq.state.dto.RfqOrderDTO;
 
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("order")
+@RequestMapping("api/rfq")
 @RequiredArgsConstructor
-public class OrderController {
-  private final OrderService orderService;
+public class RfqController {
+  private final RfqService orderService;
 
 
   @GetMapping

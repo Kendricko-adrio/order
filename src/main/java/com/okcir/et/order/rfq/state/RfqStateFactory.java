@@ -1,4 +1,4 @@
-package com.okcir.et.order.order.state;
+package com.okcir.et.order.rfq.state;
 
 import java.util.List;
 import java.util.Map;
@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Component;
 
-import com.okcir.et.order.order.state.dto.RfqStatus;
+import com.okcir.et.order.rfq.state.dto.RfqStatus;
 
 @Component
 public class RfqStateFactory {

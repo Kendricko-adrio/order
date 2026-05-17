@@ -1,4 +1,4 @@
-package com.okcir.et.order.order.redis;
+package com.okcir.et.order.rfq.redis;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

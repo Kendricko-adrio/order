@@ -1,4 +1,4 @@
-package com.okcir.et.order.order.state.dto;
+package com.okcir.et.order.rfq.state.dto;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

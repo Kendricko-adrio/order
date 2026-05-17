@@ -1,4 +1,4 @@
-package com.okcir.et.order.config;
+package com.okcir.et.order.config.redis;
 
 import org.redisson.Redisson;
 import org.redisson.api.RedissonClient;

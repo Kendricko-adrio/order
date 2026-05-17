@@ -1,7 +1,7 @@
-package com.okcir.et.order.order.state;
+package com.okcir.et.order.rfq.state;
 
-import com.okcir.et.order.order.state.dto.RfqOrderDTO;
-import com.okcir.et.order.order.state.dto.RfqStatus;
+import com.okcir.et.order.rfq.state.dto.RfqOrderDTO;
+import com.okcir.et.order.rfq.state.dto.RfqStatus;
 
 public interface RfqState {
   void created(RfqOrderDTO rfq);

@@ -1,8 +1,8 @@
-package com.okcir.et.order.order.state.created;
+package com.okcir.et.order.rfq.state.created;
 
-import com.okcir.et.order.order.state.RfqState;
-import com.okcir.et.order.order.state.dto.RfqOrderDTO;
-import com.okcir.et.order.order.state.dto.RfqStatus;
+import com.okcir.et.order.rfq.state.RfqState;
+import com.okcir.et.order.rfq.state.dto.RfqOrderDTO;
+import com.okcir.et.order.rfq.state.dto.RfqStatus;
 
 public abstract class AbstractCreateRFQ implements RfqState {
 

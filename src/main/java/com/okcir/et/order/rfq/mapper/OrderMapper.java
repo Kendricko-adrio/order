@@ -1,11 +1,11 @@
-package com.okcir.et.order.order.mapper;
+package com.okcir.et.order.rfq.mapper;
 
 import java.util.UUID;
 
 import org.springframework.stereotype.Component;
 
-import com.okcir.et.order.order.redis.OrderRedis;
-import com.okcir.et.order.order.state.dto.RfqOrderDTO;
+import com.okcir.et.order.rfq.redis.OrderRedis;
+import com.okcir.et.order.rfq.state.dto.RfqOrderDTO;
 
 /**
  * Mapper class for converting between RfqOrderDTO and OrderRedis entities.

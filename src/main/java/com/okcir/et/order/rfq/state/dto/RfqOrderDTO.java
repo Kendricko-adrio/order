@@ -1,4 +1,4 @@
-package com.okcir.et.order.order.state.dto;
+package com.okcir.et.order.rfq.state.dto;
 
 import java.math.BigDecimal;
 
@@ -13,12 +13,24 @@ import lombok.ToString;
 @ToString
 public class RfqOrderDTO {
 
-  private Long dealerId;
-  private Long clientId;
   private BigDecimal spotPrice;
   private BigDecimal clientPrice;
   private BigDecimal fwdPoints;
   private BigDecimal allInrate;
   private BigDecimal amount1;
   private String ccyPair;
+  private Long accountId;
+  private String sourceAccount;
+  private String destinationAccount;
+  @Data
+  @NoArgsConstructor
+  @AllArgsConstructor
+  public static class CustomWindow {
+    private String identityTypeLabel;
+    private String identityNumber;
+    private String dealPurposeId;
+    private String documentCodeId;
+    private String documentDescription;
+    private String npwp;
+  }
 }

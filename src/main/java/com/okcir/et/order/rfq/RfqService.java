@@ -14,7 +14,7 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 @Transactional
-public class OrderService {
+public class RfqService {
 
   private final RfqStateFactory rFactory;
 

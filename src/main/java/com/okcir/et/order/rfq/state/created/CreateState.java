@@ -1,5 +1,6 @@
 package com.okcir.et.order.rfq.state.created;
 
+import com.okcir.et.order.config.jwt.JwtContextUtil;
 import com.okcir.et.order.rfq.jpa.entity.DealsRfqEvent;
 import com.okcir.et.order.rfq.jpa.service.DealsRfqEventService;
 import com.okcir.et.order.rfq.mapper.OrderMapper;
@@ -30,7 +31,7 @@ public class CreateState extends AbstractCreateRFQ {
   public void created(RfqOrderDTO rfq) {
     log.info("Mapping RfqOrderDTO to DealsRfqEvent entity");
     DealsRfqEvent entity = orderMapper.toDealsRfqEvent(rfq);
-    entity.setClientId("client1");
+    entity.setClientId(JwtContextUtil.getCurrentUser().get().getUsername());
     entity.setOrderStatus(RfqStatus.CREATED.name());
     log.info("Saving DealsRfqEvent entity to database");
     DealsRfqEvent savedEntity = dealsRfqEventService.save(entity);

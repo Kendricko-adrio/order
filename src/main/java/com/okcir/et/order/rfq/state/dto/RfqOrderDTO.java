@@ -22,6 +22,7 @@ public class RfqOrderDTO {
   private Long accountId;
   private String sourceAccount;
   private String destinationAccount;
+  private CustomWindow customWindow;
   @Data
   @NoArgsConstructor
   @AllArgsConstructor

@@ -1,6 +1,7 @@
 package com.okcir.et.order.config.redis;
 
 import java.math.BigDecimal;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 
 import org.springframework.context.annotation.Bean;
@@ -13,32 +14,38 @@ import org.springframework.data.redis.core.convert.RedisCustomConversions;
 @Configuration
 public class RedisRepositoryConfig {
 
-    // 1. Converter: BigDecimal -> String (Writing to Redis)
+    /**
+     * Converter: BigDecimal -> byte[] (Writing to Redis).
+     * Must convert directly to byte[] so Spring Data Redis doesn't need to chain converters.
+     */
     @WritingConverter
-    public enum BigDecimalToStringConverter implements Converter<BigDecimal, String> {
+    public enum BigDecimalToBytesConverter implements Converter<BigDecimal, byte[]> {
         INSTANCE;
 
         @Override
-        public String convert(BigDecimal source) {
-            return source == null ? null : source.toPlainString();
-            // .toPlainString() prevents scientific notation like 1E+2
+        public byte[] convert(BigDecimal source) {
+            return source == null ? null : source.toPlainString().getBytes(StandardCharsets.UTF_8);
         }
     }
 
-    // 2. Converter: String -> BigDecimal (Reading from Redis)
+    /**
+     * Converter: byte[] -> BigDecimal (Reading from Redis).
+     */
     @ReadingConverter
-    public enum StringToBigDecimalConverter implements Converter<byte[], BigDecimal> {
+    public enum BytesToBigDecimalConverter implements Converter<byte[], BigDecimal> {
         INSTANCE;
 
         @Override
         public BigDecimal convert(byte[] source) {
-            return source == null || source.length == 0 ? null : new BigDecimal(new String(source));
+            return source == null || source.length == 0 ? null : new BigDecimal(new String(source, StandardCharsets.UTF_8));
         }
     }
 
-    // 3. Register the converters into Spring Data Redis
     @Bean
     public RedisCustomConversions redisCustomConversions() {
-        return new RedisCustomConversions(Arrays.asList(BigDecimalToStringConverter.INSTANCE, StringToBigDecimalConverter.INSTANCE));
+        return new RedisCustomConversions(Arrays.asList(
+            BigDecimalToBytesConverter.INSTANCE,
+            BytesToBigDecimalConverter.INSTANCE
+        ));
     }
 }
